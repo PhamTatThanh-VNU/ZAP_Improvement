@@ -17,7 +17,13 @@ Các script này giúp ZAP phát hiện nhiều loại lỗ hổng hơn và tùy
 ---
 
 ## 3. [wstg_markdown_data](./wstg_markdown_data)
-Dữ liệu về [OWASP Web Security Testing Guide (WSTG)](https://owasp.org/www-project-web-security-testing-guide/), phục vụ xây dựng database hướng dẫn kiểm thử bảo mật trên web.  
+Dữ liệu về [OWASP Web Security Testing Guide (WSTG)](https://owasp.org/www-project-web-security-testing-guide/), phục vụ xây dựng database hướng dẫn kiểm thử bảo mật trên web.  <br>
+**Quickstart Langflow RAG**: 
+- Truy cập [Langflow](https://www.datastax.com/products/langflow) và đăng nhập 
+- Import file  [LLM RAG](./ZAP_Script_LLMRAG.json) . FIle này sẽ chứa database về WSTG, Prompt cho mô hình.  
+- Cung cấp cho mô hình ngữ cảnh về 1 trong các loại template  ZAP scripts và tiến hành hỏi dáp<br>
+
+Chi tiết trong [Demo](https://drive.google.com/drive/folders/1bamASoMwHqR-oiVxKNCVnNiIvIfuPstj?usp=sharing)
 
 ---
 ## 4. Demo Video
