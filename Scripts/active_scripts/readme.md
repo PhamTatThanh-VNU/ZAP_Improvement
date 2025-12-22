@@ -69,4 +69,4 @@
 [XPath Injection Custom.js](./XPath%20Injection%20Test.js)
 
 ## Update hướng dẫn chạy
-Với script OAST CWE-502 (Python or Javascripts) cần vào Tool ZAP --> Tools --> Options --> OAST --> Chọn OOB Service Used In Active Scans là BOAST.
+Với script OAST CWE-502 (Python or Javascripts) cần vào Tool ZAP --> Tools --> Options --> OAST --> Chọn OOB Service Used In Active Scans là BOAST --> OK.
