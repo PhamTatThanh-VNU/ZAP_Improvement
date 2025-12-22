@@ -60,4 +60,7 @@ ZAP Passive Scripts là các script mở rộng cho OWASP ZAP, giúp kiểm th�
 ## Script Custom để quét thụ động lỗ hổng liên quan tới CWE-548 và CWE-200 trong OWASP Juice Shop
 [CWE-548](./cwe-548.js)
 <br>
-[CWE-200](./metricsAlert.js)
+[CWE-200](./CWE-200.js)
+
+## Update hướng dẫn chạy
+Với script [CWE-200](./CWE-200.js) cần thay đổi đường dẫn trỏ tới file [regex_patterns](./regex_patterns.txt) trên hệ thống trước khi chạy.
