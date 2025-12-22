@@ -67,3 +67,6 @@
 ## Scripts được sinh bằng LLM và thử nghiệm trên OWASP Benchmark, OWASP Broken Crystal, OWASP Juice Shop
 [LDAP Injection Custom.js](./LDAP%20Injection%20Test.js)<br>
 [XPath Injection Custom.js](./XPath%20Injection%20Test.js)
+
+## Update hướng dẫn chạy
+Với script OAST CWE-502 (Python or Javascripts) cần vào Tool ZAP --> Tools --> Options --> OAST --> Chọn OOB Service Used In Active Scans là BOAST.
