@@ -1,12 +1,14 @@
-const PluginPassiveScanner = Java.type("org.zaproxy.zap.extension.pscan.PluginPassiveScanner");
-const ScanRuleMetadata = Java.type("org.zaproxy.addon.commonlib.scanrules.ScanRuleMetadata");
+const PluginPassiveScanner =
+    Java.type("org.zaproxy.zap.extension.pscan.PluginPassiveScanner");
+const ScanRuleMetadata =
+    Java.type("org.zaproxy.addon.commonlib.scanrules.ScanRuleMetadata");
 
 function getMetadata() {
     return ScanRuleMetadata.fromYaml(`
 id: 900116
-name: Improper Output Encoding (CWE-116)
-description: Detects potential unescaped user-controlled output in HTML/JSON/JS contexts.
-solution: Properly escape and encode all output according to its HTML/JS/JSON context.
+name: Improper Output Encoding in JSON (CWE-116)
+description: Detects unescaped or dangerous characters inside JSON string values.
+solution: Properly escape user-controlled data before embedding into JSON responses.
 references:
   - https://cwe.mitre.org/data/definitions/116.html
 risk: MEDIUM
@@ -15,77 +17,91 @@ cweId: 116
 wascId: 0
 alertTags:
   OWASP_2021_A03: "Injection"
-otherInfo: Detects suspicious unescaped output patterns in HTML, attributes, script blocks, and JSON.
 status: beta
 `);
 }
 
+/* ===================== UTILS ===================== */
 
 function getLineAndColumn(text, index) {
     const before = text.substring(0, index);
     const lines = before.split("\n");
-    const line = lines.length;
-    const col = lines[lines.length - 1].length + 1;
-    return { line, col };
+    return {
+        line: lines.length,
+        col: lines[lines.length - 1].length + 1
+    };
 }
 
-function buildEvidence(body, start, end) {
-    const snippetStart = Math.max(0, start - 40);
-    const snippetEnd = Math.min(body.length, end + 40);
-    const snippet = body.substring(snippetStart, snippetEnd);
+function buildEvidence(body, value) {
+    const idx = body.indexOf(value);
+    if (idx === -1) return value;
 
-    const pointer = " ".repeat(start - snippetStart) +
-                    "^".repeat(Math.max(1, end - start));
-
-    const pos = getLineAndColumn(body, start);
-    return `Found unescaped HTML at line ${pos.line}, column ${pos.col}:\n` +
-           snippet + "\n" +
-           pointer + "\n";
+    const pos = getLineAndColumn(body, idx);
+    return `Suspicious JSON string at line ${pos.line}, column ${pos.col}:\n${value}`;
 }
+
+/* ===================== CORE SCAN ===================== */
 
 function scan(ps, msg, src) {
+    const ct = msg.getResponseHeader().getHeader("Content-Type") || "";
+
+    // ✅ Chỉ xét JSON
+    if (!ct.toLowerCase().includes("json")) {
+        return;
+    }
+
     const body = msg.getResponseBody().toString();
-    if (!body || body.length === 0) return;
+    if (!body) return;
+
+    let json;
+    try {
+        json = JSON.parse(body);
+    } catch (e) {
+        ps.newAlert("900116-JSON-PARSE")
+            .setParam("Invalid JSON output – possible improper escaping.")
+            .setEvidence(e.message)
+            .raise();
+        return;
+    }
 
     let findings = [];
 
-    const htmlTagPattern = /<\/?\w+[^>]*>/g;  
-    let m;
-    while ((m = htmlTagPattern.exec(body)) !== null) {
-        const tag = m[0];
-        const start = m.index;
-        const end = start + tag.length;
-        
-        findings.push(buildEvidence(body, start, end));
-    }
+    function walk(value) {
+        if (typeof value === "string") {
 
-    const jsEventPattern = /\bon\w+=["'][^"']*["']/gi;
-    while ((m = jsEventPattern.exec(body)) !== null) {
-        findings.push(buildEvidence(body, m.index, m.index + m[0].length));
-    }
-    
-    const jsUriPattern = /javascript:[^"'\s<>]*/gi;
-    while ((m = jsUriPattern.exec(body)) !== null) {
-        findings.push(buildEvidence(body, m.index, m.index + m[0].length));
-    }
+            // Các pattern nguy hiểm trong JSON string
+            const dangerousPatterns = [
+                /<script[\s>]/i,
+                /<\/\w+>/i,
+                /\bon\w+=/i,
+                /javascript:/i
+            ];
 
-    const ct = msg.getResponseHeader().getHeader("Content-Type") || "";
-    if (ct.includes("application/json")) {
-        const rawHtmlPattern = /<\/?\w+[^>]*>/g;
-        let j;
-        while ((j = rawHtmlPattern.exec(body)) !== null) {
-            findings.push(buildEvidence(body, j.index, j.index + j[0].length));
+            for (let p of dangerousPatterns) {
+                if (p.test(value)) {
+                    findings.push(buildEvidence(body, value));
+                    break;
+                }
+            }
+        } else if (Array.isArray(value)) {
+            value.forEach(walk);
+        } else if (value && typeof value === "object") {
+            Object.keys(value).forEach(k => walk(value[k]));
         }
     }
-    
+
+    walk(json);
+
     if (findings.length > 0) {
-        ps.newAlert("900116-2")
-            .setParam("Detected improper output encoding inside response.")
+        ps.newAlert("900116-JSON-ENCODE")
+            .setParam("Improper output encoding in JSON response.")
             .setEvidence(findings.join("\n---\n"))
             .raise();
     }
 }
 
 function appliesToHistoryType(historyType) {
-    return PluginPassiveScanner.getDefaultHistoryTypes().contains(historyType);
+    return PluginPassiveScanner
+        .getDefaultHistoryTypes()
+        .contains(historyType);
 }
