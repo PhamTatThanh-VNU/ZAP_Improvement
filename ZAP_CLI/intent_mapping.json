@@ -1,0 +1,346 @@
+{
+  "vulnerability_mapping": {
+    "sql_injection": {
+      "primary_keywords": ["sql injection", "sql inject", "sqli", "sql vulnerability", "union based", "blind sql"],
+      "files": [
+        "SQL_Injection.md",
+        "SQL_Injection_MySQL_Injection.md",
+        "SQL_Injection_PostgreSQL_Injection.md",
+        "SQL_Injection_MSSQL_Injection.md",
+        "SQL_Injection_OracleSQL_Injection.md",
+        "SQL_Injection_SQLite_Injection.md",
+        "SQL_Injection_DB2_Injection.md",
+        "SQL_Injection_BigQuery_Injection.md",
+        "SQL_Injection_Cassandra_Injection.md",
+        "SQL_Injection_SQLmap.md"
+      ]
+    },
+    "xss_injection": {
+      "primary_keywords": ["xss", "cross site scripting", "cross-site scripting", "reflected xss", "stored xss", "dom xss", "javascript injection"],
+      "files": [
+        "XSS_Injection.md",
+        "XSS_Injection_1_-_XSS_Filter_Bypass.md",
+        "XSS_Injection_2_-_XSS_Polyglot.md",
+        "XSS_Injection_3_-_XSS_Common_WAF_Bypass.md",
+        "XSS_Injection_4_-_CSP_Bypass.md",
+        "XSS_Injection_5_-_XSS_in_Angular.md"
+      ]
+    },
+    "xxe_injection": {
+      "primary_keywords": ["xxe", "xml external entity", "xml injection", "xml entity injection"],
+      "files": ["XXE_Injection.md"]
+    },
+    "command_injection": {
+      "primary_keywords": ["command injection", "cmd injection", "os injection", "shell injection", "code execution", "rce", "remote code execution"],
+      "files": ["Command_Injection.md"]
+    },
+    "ldap_injection": {
+      "primary_keywords": ["ldap injection", "ldap", "directory injection"],
+      "files": ["LDAP_Injection.md"]
+    },
+    "nosql_injection": {
+      "primary_keywords": ["nosql injection", "mongodb injection", "nosql", "document database injection"],
+      "files": ["NoSQL_Injection.md"]
+    },
+    "file_inclusion": {
+      "primary_keywords": ["file inclusion", "lfi", "rfi", "local file inclusion", "remote file inclusion", "path traversal", "directory traversal"],
+      "files": [
+        "File_Inclusion.md",
+        "File_Inclusion_LFI-to-RCE.md",
+        "File_Inclusion_Wrappers.md",
+        "Directory_Traversal.md"
+      ]
+    },
+    "server_side_template_injection": {
+      "primary_keywords": ["ssti", "template injection", "server side template injection", "template vulnerability"],
+      "files": [
+        "Server_Side_Template_Injection.md",
+        "Server_Side_Template_Injection_PHP.md",
+        "Server_Side_Template_Injection_Python.md",
+        "Server_Side_Template_Injection_Java.md",
+        "Server_Side_Template_Injection_JavaScript.md",
+        "Server_Side_Template_Injection_Ruby.md",
+        "Server_Side_Template_Injection_ASP.md"
+      ]
+    },
+    "server_side_request_forgery": {
+      "primary_keywords": ["ssrf", "server side request forgery", "internal network access", "cloud metadata"],
+      "files": [
+        "Server_Side_Request_Forgery.md",
+        "Server_Side_Request_Forgery_SSRF-Advanced-Exploitation.md",
+        "Server_Side_Request_Forgery_SSRF-Cloud-Instances.md"
+      ]
+    },
+    "cross_site_request_forgery": {
+      "primary_keywords": ["csrf", "cross site request forgery", "cross-site request forgery", "session riding"],
+      "files": ["Cross-Site_Request_Forgery.md"]
+    },
+    "deserialization": {
+      "primary_keywords": ["insecure deserialization", "deserialization", "object injection", "unsafe deserialization"],
+      "files": [
+        "Insecure_Deserialization.md",
+        "Insecure_Deserialization_Java.md",
+        "Insecure_Deserialization_PHP.md",
+        "Insecure_Deserialization_Python.md",
+        "Insecure_Deserialization_DotNET.md",
+        "Insecure_Deserialization_Node.md",
+        "Insecure_Deserialization_Ruby.md"
+      ]
+    },
+    "jwt_vulnerabilities": {
+      "primary_keywords": ["jwt", "json web token", "jwt attack", "token manipulation", "jwt bypass"],
+      "files": ["JSON_Web_Token.md"]
+    },
+    "file_upload": {
+      "primary_keywords": ["file upload", "upload vulnerability", "malicious file upload", "file upload bypass"],
+      "files": ["Upload_Insecure_Files.md"]
+    },
+    "xpath_injection": {
+      "primary_keywords": ["xpath injection", "xpath", "xml path injection"],
+      "files": ["XPATH_Injection.md"]
+    },
+    "cors_misconfiguration": {
+      "primary_keywords": ["cors", "cross origin resource sharing", "cors misconfiguration", "same origin policy bypass"],
+      "files": ["CORS_Misconfiguration.md"]
+    },
+    "clickjacking": {
+      "primary_keywords": ["clickjacking", "ui redressing", "iframe attack"],
+      "files": ["Clickjacking.md"]
+    },
+    "account_takeover": {
+      "primary_keywords": ["account takeover", "ato", "account hijacking", "mfa bypass", "2fa bypass"],
+      "files": [
+        "Account_Takeover.md",
+        "Account_Takeover_mfa-bypass.md"
+      ]
+    },
+    "api_key_leaks": {
+      "primary_keywords": ["api key leak", "api keys", "secret leakage", "credential exposure"],
+      "files": [
+        "API_Key_Leaks.md",
+        "API_Key_Leaks_IIS-Machine-Keys.md"
+      ]
+    },
+    "graphql_injection": {
+      "primary_keywords": ["graphql", "graphql injection", "graphql vulnerability", "query injection"],
+      "files": ["GraphQL_Injection.md"]
+    },
+    "crlf_injection": {
+      "primary_keywords": ["crlf injection", "http response splitting", "header injection"],
+      "files": ["CRLF_Injection.md"]
+    },
+    "csv_injection": {
+      "primary_keywords": ["csv injection", "formula injection", "spreadsheet injection"],
+      "files": ["CSV_Injection.md"]
+    },
+    "latex_injection": {
+      "primary_keywords": ["latex injection", "tex injection", "document injection"],
+      "files": ["LaTeX_Injection.md"]
+    },
+    "prototype_pollution": {
+      "primary_keywords": ["prototype pollution", "javascript pollution", "object pollution"],
+      "files": ["Prototype_Pollution.md"]
+    },
+    "race_condition": {
+      "primary_keywords": ["race condition", "toctou", "time of check time of use", "concurrency vulnerability"],
+      "files": ["Race_Condition.md"]
+    },
+    "oauth_misconfiguration": {
+      "primary_keywords": ["oauth", "oauth2", "oauth misconfiguration", "authentication bypass"],
+      "files": ["OAuth_Misconfiguration.md"]
+    },
+    "open_redirect": {
+      "primary_keywords": ["open redirect", "url redirection", "unvalidated redirect"],
+      "files": ["Open_Redirect.md"]
+    },
+    "mass_assignment": {
+      "primary_keywords": ["mass assignment", "parameter binding", "object injection"],
+      "files": ["Mass_Assignment.md"]
+    },
+    "prompt_injection": {
+      "primary_keywords": ["prompt injection", "ai injection", "llm injection", "model manipulation"],
+      "files": ["Prompt_Injection.md"]
+    },
+    "request_smuggling": {
+      "primary_keywords": ["request smuggling", "http request smuggling", "desync attack"],
+      "files": ["Request_Smuggling.md"]
+    },
+    "saml_injection": {
+      "primary_keywords": ["saml injection", "saml", "xml signature wrapping"],
+      "files": ["SAML_Injection.md"]
+    },
+    "server_side_include": {
+      "primary_keywords": ["ssi", "server side include", "ssi injection"],
+      "files": ["Server_Side_Include_Injection.md"]
+    },
+    "type_juggling": {
+      "primary_keywords": ["type juggling", "type confusion", "loose comparison"],
+      "files": ["Type_Juggling.md"]
+    },
+    "web_cache_deception": {
+      "primary_keywords": ["web cache deception", "cache poisoning", "cache vulnerability"],
+      "files": ["Web_Cache_Deception.md"]
+    },
+    "websockets": {
+      "primary_keywords": ["websocket", "websockets", "ws vulnerability"],
+      "files": ["Web_Sockets.md"]
+    },
+    "xslt_injection": {
+      "primary_keywords": ["xslt injection", "xsl injection", "stylesheet injection"],
+      "files": ["XSLT_Injection.md"]
+    },
+    "zip_slip": {
+      "primary_keywords": ["zip slip", "path traversal via zip", "archive extraction vulnerability"],
+      "files": ["Zip_Slip.md"]
+    },
+    "business_logic": {
+      "primary_keywords": ["business logic", "business logic error", "logic flaw"],
+      "files": ["Business_Logic_Errors.md"]
+    },
+    "brute_force": {
+      "primary_keywords": ["brute force", "rate limit bypass", "authentication brute force"],
+      "files": ["Brute_Force_Rate_Limit.md"]
+    },
+    "denial_of_service": {
+      "primary_keywords": ["dos", "denial of service", "ddos", "resource exhaustion"],
+      "files": ["Denial_of_Service.md"]
+    },
+    "dependency_confusion": {
+      "primary_keywords": ["dependency confusion", "supply chain attack", "package confusion"],
+      "files": ["Dependency_Confusion.md"]
+    },
+    "dns_rebinding": {
+      "primary_keywords": ["dns rebinding", "dns attack", "same origin bypass"],
+      "files": ["DNS_Rebinding.md"]
+    },
+    "dom_clobbering": {
+      "primary_keywords": ["dom clobbering", "dom manipulation", "html injection"],
+      "files": ["DOM_Clobbering.md"]
+    },
+    "java_rmi": {
+      "primary_keywords": ["java rmi", "rmi", "remote method invocation"],
+      "files": ["Java_RMI.md"]
+    },
+    "orm_leak": {
+      "primary_keywords": ["orm leak", "hibernate", "database orm vulnerability"],
+      "files": ["ORM_Leak.md"]
+    },
+    "regular_expression": {
+      "primary_keywords": ["regex", "regular expression", "redos", "regex denial"],
+      "files": ["Regular_Expression.md"]
+    },
+    "tabnabbing": {
+      "primary_keywords": ["tabnabbing", "tab nabbing", "window reference attack"],
+      "files": ["Tabnabbing.md"]
+    }
+  },
+  "technology_specific": {
+    "mysql": {
+      "keywords": ["mysql", "mysql injection"],
+      "files": ["SQL_Injection_MySQL_Injection.md"]
+    },
+    "postgresql": {
+      "keywords": ["postgresql", "postgres", "psql injection"],
+      "files": ["SQL_Injection_PostgreSQL_Injection.md"]
+    },
+    "mssql": {
+      "keywords": ["mssql", "sql server", "microsoft sql"],
+      "files": ["SQL_Injection_MSSQL_Injection.md", "Methodology_and_Resources_MSSQL_Server_-_Cheatsheet.md"]
+    },
+    "oracle": {
+      "keywords": ["oracle", "oracle sql"],
+      "files": ["SQL_Injection_OracleSQL_Injection.md"]
+    },
+    "java": {
+      "keywords": ["java", "java deserialization", "java rmi"],
+      "files": [
+        "Insecure_Deserialization_Java.md",
+        "Server_Side_Template_Injection_Java.md",
+        "Java_RMI.md"
+      ]
+    },
+    "php": {
+      "keywords": ["php", "php deserialization"],
+      "files": [
+        "Insecure_Deserialization_PHP.md",
+        "Server_Side_Template_Injection_PHP.md"
+      ]
+    },
+    "python": {
+      "keywords": ["python", "python deserialization"],
+      "files": [
+        "Insecure_Deserialization_Python.md",
+        "Server_Side_Template_Injection_Python.md"
+      ]
+    },
+    "nodejs": {
+      "keywords": ["node", "nodejs", "node.js", "javascript"],
+      "files": [
+        "Insecure_Deserialization_Node.md",
+        "Server_Side_Template_Injection_JavaScript.md"
+      ]
+    },
+    "dotnet": {
+      "keywords": ["dotnet", ".net", "c#", "asp.net"],
+      "files": [
+        "Insecure_Deserialization_DotNET.md",
+        "Server_Side_Template_Injection_ASP.md"
+      ]
+    },
+    "ruby": {
+      "keywords": ["ruby", "rails", "ruby on rails"],
+      "files": [
+        "Insecure_Deserialization_Ruby.md",
+        "Server_Side_Template_Injection_Ruby.md"
+      ]
+    }
+  },
+  "methodology_and_tools": {
+    "penetration_testing": {
+      "keywords": ["pentest", "penetration test", "methodology", "enumeration"],
+      "files": [
+        "Methodology_and_Resources_Methodology_and_enumeration.md",
+        "Methodology_and_Resources_Web_Attack_Surface.md",
+        "Methodology_and_Resources_Network_Discovery.md"
+      ]
+    },
+    "active_directory": {
+      "keywords": ["active directory", "ad", "domain controller", "kerberos"],
+      "files": ["Methodology_and_Resources_Active_Directory_Attack.md"]
+    },
+    "cloud_security": {
+      "keywords": ["aws", "azure", "cloud", "cloud pentest"],
+      "files": [
+        "Methodology_and_Resources_Cloud_-_AWS_Pentest.md",
+        "Methodology_and_Resources_Cloud_-_Azure_Pentest.md"
+      ]
+    },
+    "container_security": {
+      "keywords": ["docker", "kubernetes", "container", "k8s"],
+      "files": [
+        "Methodology_and_Resources_Container_-_Docker_Pentest.md",
+        "Methodology_and_Resources_Container_-_Kubernetes_Pentest.md"
+      ]
+    },
+    "windows_security": {
+      "keywords": ["windows", "powershell", "mimikatz", "amsi bypass"],
+      "files": [
+        "Methodology_and_Resources_Windows_-_Privilege_Escalation.md",
+        "Methodology_and_Resources_Windows_-_Persistence.md",
+        "Methodology_and_Resources_Powershell_-_Cheatsheet.md",
+        "Methodology_and_Resources_Windows_-_Mimikatz.md",
+        "Methodology_and_Resources_Windows_-_AMSI_Bypass.md",
+        "Methodology_and_Resources_Windows_-_DPAPI.md",
+        "Methodology_and_Resources_Windows_-_Defenses.md"
+      ]
+    },
+    "linux_security": {
+      "keywords": ["linux", "privilege escalation", "persistence", "evasion"],
+      "files": [
+        "Methodology_and_Resources_Linux_-_Privilege_Escalation.md",
+        "Methodology_and_Resources_Linux_-_Persistence.md",
+        "Methodology_and_Resources_Linux_-_Evasion.md"
+      ]
+    }
+  }
+}

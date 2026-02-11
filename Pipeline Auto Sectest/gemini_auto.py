@@ -1,9 +1,10 @@
-from browser_use import Agent, BrowserProfile, BrowserSession, ChatGoogle
+from browser_use import Agent, BrowserProfile, BrowserSession,Browser, ChatGoogle
+from browser_use.browser import ProxySettings
 from dotenv import load_dotenv
 load_dotenv()
 import asyncio
 
-llm = ChatGoogle(model="gemini-2.5-pro")
+llm = ChatGoogle(model="gemini-2.0-flash")
 extend_system_message = """
 You are a security testing expert. 
 Your task is to thoroughly explore the target website by interacting with all accessible elements. 
@@ -11,7 +12,7 @@ Click every clickable component, scroll through all sections, and navigate to ev
 Perform these actions systematically to maximize security testing coverage and ensure no part of the website is overlooked.
 """
 task = """
-Open http://127.0.0.1:3000/ , if you see the modal click dismiss and log in with:
+Open http://localhost:3000/#/ , if you see the modal click dismiss and log in with:
 - Email: phamtatthanh22@gmail.com
 - Password: iamthanhdzpro1
 
@@ -29,7 +30,7 @@ You will see My Payment Options. On the “My Payment Options” page. Click on 
 
 """
 initial_action = [
-    {'go_to_url': {'url': 'http://127.0.0.1:3000', 'new_tab': True}},
+    {'go_to_url': {'url': 'http://localhost:3000/', 'new_tab': True}},
     {'wait': {'seconds': 1}},    
 ]
 async def main():
@@ -39,6 +40,11 @@ async def main():
     #     proxy={
     #         "server" : "http://localhost:8080"    
     #     }
+    browser = Browser(
+       proxy=ProxySettings(
+            server="http://localhost:8081",
+        )
+    )
     # browser_session = BrowserSession(
     #     # executable_path=r'C:\Program Files\Google\Chrome\Application\chrome.exe',
     #     user_data_dir=r'C:\Users\admin\AppData\Local\Temp\scoped_dir11492_2071321393\Default'
@@ -50,6 +56,7 @@ async def main():
         # Do this and repeat continuously, if you can't click anymore, go back to the main page.""",
         task=task,
         llm=llm,
+        browser=browser,
         initial_action=initial_action,
         extend_system_message=extend_system_message
     )

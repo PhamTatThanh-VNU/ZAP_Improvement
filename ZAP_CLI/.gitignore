@@ -1,0 +1,49 @@
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ========================
+# Environment & Secrets
+# ========================
+.env
+.env.*
+!.env.example
+
+# ========================
+# IDE / Editor
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# ========================
+# OS generated
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# Project specific
+# ========================
+vulnerability_chat.db
+response.txt
+zap_scripts_by_llm/*.js
+
+# ========================
+# Logs
+# ========================
+*.log
+logs/
